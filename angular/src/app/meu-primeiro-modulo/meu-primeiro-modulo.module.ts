@@ -10,6 +10,9 @@ import { SegundoComponenteComponent } from './segundo-componente/segundo-compone
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    SegundoComponenteComponent, // Declarar quais componentes que serão exportados
   ]
 })
 export class MeuPrimeiroModuloModule { }
