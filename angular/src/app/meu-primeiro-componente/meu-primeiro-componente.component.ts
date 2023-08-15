@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class MeuPrimeiroComponenteComponent {
 
+  nome!: string; //inicializando com o !
+  cursos: string[] = ['Java', 'Angular', 'Python'];
+
+  constructor() {
+    this.nome = "Alisson";
+  }
+
 }

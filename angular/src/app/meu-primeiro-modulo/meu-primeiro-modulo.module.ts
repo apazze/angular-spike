@@ -12,7 +12,7 @@ import { SegundoComponenteComponent } from './segundo-componente/segundo-compone
     CommonModule
   ],
   exports: [
-    SegundoComponenteComponent, // Declarar quais componentes que serão exportados
+    SegundoComponenteComponent, // Declarar quais componentes que serão exportados, mas nao necessariamente todos, mantendo alguns privados
   ]
 })
 export class MeuPrimeiroModuloModule { }
