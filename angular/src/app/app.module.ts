@@ -5,9 +5,9 @@ import { AppComponent } from './app.component';
 import { MeuPrimeiroComponenteComponent } from './meu-primeiro-componente/meu-primeiro-componente.component';
 
 @NgModule({
-  declarations: [
+  declarations: [ // declarations, imports, providers, bootstrap são metadados
     AppComponent,
-    MeuPrimeiroComponenteComponent
+    MeuPrimeiroComponenteComponent //expor o componente para outras classes
   ],
   imports: [
     BrowserModule
