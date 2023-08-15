@@ -9,6 +9,8 @@ producao@PROD-06:/mnt/d/Desenvolvimento/angular-spike$ **npm -v**
 
 *9.6.7*
 
+- Fazer no linux, Windows não funcionou o Live Reload. Clonar o projeto no Linux também!
+
 1 - **ng new my-app**
 
 2 - **cd my-app**
