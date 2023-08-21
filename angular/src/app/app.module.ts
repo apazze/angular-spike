@@ -7,11 +7,14 @@ import { MeuPrimeiroModuloModule } from './meu-primeiro-modulo/meu-primeiro-modu
 import { DataBindingComponent } from './data-binding/data-binding.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { InputPropertyComponent } from './input-property/input-property.component';
 
 @NgModule({ //Decorator ou anotação da classe que é um módulo e que agrupa e organiza componentes, services, etc... de uma determinado pacote ou feature
   declarations: [ // declarations, imports, providers, bootstrap são metadados
     AppComponent, // em declarations é declarado os componentes, diretivas e pipes do módulo
-    MeuPrimeiroComponenteComponent, DataBindingComponent //expor o componente para outras classes
+    MeuPrimeiroComponenteComponent, 
+    DataBindingComponent, 
+    InputPropertyComponent //expor o componente para outras classes
   ],
   imports: [
     BrowserModule, // módulos externos que serão importados nos componentes ou neste módulo

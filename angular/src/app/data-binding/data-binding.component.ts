@@ -27,6 +27,8 @@ export class DataBindingComponent {
     }
   }
 
+  nomeDoCurso: string = 'Angular';
+
   getValor() {
     return 1;
   }
