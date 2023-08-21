@@ -1,6 +1,9 @@
 <section>
-  <article>
-    <h3>Interpolation/Interpolação -> que é o valor do Componente para o Template HTML</h3>
+  <!-- <article>
+    <h3>
+      Interpolation/Interpolação -> que é o valor do Componente para o Template
+      HTML
+    </h3>
     <p>Url do video sobre interpolação é: {{ url }}</p>
     <p>1 + 1 é: {{ 1 + 1 }}</p>
     <p>1 + 1 não é: {{ 1 + 1 + getValor() }}</p>
@@ -9,23 +12,80 @@
     </p>
   </article>
   <article>
-    <h3>Property binding -> que é o valor do Componente para o Template HTML</h3>
+    <h3>
+      Property binding -> que é o valor do Componente para o Template HTML
+    </h3>
     <p>Primeiro com interpolação:</p>
-    <img src="{{ urlImagem }}">
-    <p>Depois com Property binding com variavel com syntax sugar </p>
-    <img [src]="urlImagem">
+    <img src="{{ urlImagem }}" />
+    <p>Depois com Property binding com variavel com syntax sugar</p>
+    <img [src]="urlImagem" />
     <p>Depois com Property binding com metodo</p>
-    <img [src]="getImagem()">
+    <img [src]="getImagem()" />
 
-    <p>Depois com Property binding com variavel com outra sintaxe sem syntax sugar</p>
-    <img bind-src="urlImagem">
+    <p>
+      Depois com Property binding com variavel com outra sintaxe sem syntax
+      sugar
+    </p>
+    <img bind-src="urlImagem" />
 
-    <p>Quando não existe uma propriedade no elemento, usa-se [attr.colspan] -> Exemplo com o colspan, mas é rarissimos casos</p>
+    <p>
+      Quando não existe uma propriedade no elemento, usa-se [attr.colspan] ->
+      Exemplo com o colspan, mas é rarissimos casos
+    </p>
   </article>
-
 
   <article>
-    Class e Style Binding
+    <h3>Class e Style Binding</h3>
+    <div>
+      Selecione uma classe:
+      <select #variavel_classe_bootstrap_selecionada (change)="0">
+        <option value="alert-success">Sucesso</option>
+        <option value="alert-info">Info</option>
+        <option value="alert-warning">Warning</option>
+        <option value="alert-danger">Danger</option>
+      </select>
+      <br><br>
+      
+      <div class="alert {{ variavel_classe_bootstrap_selecionada.value }}" role="alert">
+        Aqui como o valor do combobox já é o nome da classe, basta fazer a interpolação com o value...
+      </div>
 
-  </article>
+      <div class= "alert" role="alert" [class.alert-success]="variavel_classe_bootstrap_selecionada.value == 'alert-success'">Sucesso</div>
+      <div class= "alert" role="alert" [class.alert-info]="variavel_classe_bootstrap_selecionada.value == 'alert-info'">Informação</div>
+      <div class= "alert" role="alert" [class.alert-warning]="variavel_classe_bootstrap_selecionada.value == 'alert-warning'">Atenção</div>
+      <div class= "alert" role="alert" [class.alert-danger]="variavel_classe_bootstrap_selecionada.value == 'alert-danger'">Erro</div>
+
+      <div class="alert alert-danger" role="alert" [style.display]="variavel_classe_bootstrap_selecionada.value == 'alert-danger' ? 'block' : 'none'">Esse texto somente aparece em caso de erro.</div>
+    </div>
+  </article> -->
+
+  <section class="event-binding">
+    <article>
+      <h3>Event Binding</h3>
+      <div>
+        <button (click)="botaoClicado()" class="btn btn-primary"> <!-- seria a mesma coisa que on-click ao inves de (click)-->
+          Me clique
+        </button>
+        <br /><br />
+        <input
+          type="text"
+          (keyup)="onKeyUp($event)"
+          (keyup.enter)="salvarValor(campoInput.value)"
+          (blur)="salvarValor(campoInput.value)"
+          #campoInput
+        />
+        <p>Valor Atual: {{ valorAtual }}</p>
+        <p>Valor Salvo: {{ valorSalvo }}</p>
+        <br>
+
+        <span
+        (mouseover)="onMouseOverOut()"
+        (mouseout)="onMouseOverOut()"
+        [class.minhaClasseCss]="isMouseOver"> <!--Se o valor de isMouseOver for true-->
+        Passe o mouse sobre mim
+      </span>
+
+      </div>
+    </article>
+  </section>
 </section>
