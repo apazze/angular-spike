@@ -1,5 +1,6 @@
+<!--
 <section>
-  <!-- <article>
+   <article>
     <h3>
       Interpolation/Interpolação -> que é o valor do Componente para o Template
       HTML
@@ -59,11 +60,11 @@
     </div>
   </article> -->
 
-  <section class="event-binding">
+<!-- <section class="event-binding">
     <article>
       <h3>Event Binding</h3>
       <div>
-        <button (click)="botaoClicado()" class="btn btn-primary"> <!-- seria a mesma coisa que on-click ao inves de (click)-->
+        <button (click)="botaoClicado()" class="btn btn-primary"> //seria a mesma coisa que on-click ao inves de (click)
           Me clique
         </button>
         <br /><br />
@@ -81,11 +82,34 @@
         <span
         (mouseover)="onMouseOverOut()"
         (mouseout)="onMouseOverOut()"
-        [class.minhaClasseCss]="isMouseOver"> <!--Se o valor de isMouseOver for true-->
+        [class.minhaClasseCss]="isMouseOver"> //Se o valor de isMouseOver for true
         Passe o mouse sobre mim
       </span>
 
       </div>
     </article>
   </section>
+</section> 
+-->
+<section class="two-way-binding">
+  <article>
+    <h3>Two-way data binding</h3>
+    <div>
+      <input type="text" [value]="nome" (input)="nome = $event.target.value" />
+
+      <input type="text" [(ngModel)]="nome" />
+
+      <p>Você digitou: {{ nome }}</p>
+    </div>
+
+    <div>
+      <p>
+        Meu nome é {{ pessoa.nome }} e tenho {{ pessoa.idade }} e moro na rua
+        {{ pessoa.end.rua }}
+      </p>
+
+      <input type="text" [(ngModel)]="pessoa.nome" />
+      <input type="text" [(ngModel)]="pessoa.end.rua" />
+    </div>
+  </article>
 </section>
