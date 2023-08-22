@@ -4,3 +4,13 @@
     [class.bi-emoji-angry]="!clique"
     (click)="onClick()"></i>
 </h1>
+
+<br>
+<h1>
+    <i class="bi"
+    [ngClass]="{
+        'bi-emoji-smile': clique,
+        'bi-emoji-angry': !clique
+    }"
+    (click)="onClick()"></i>
+</h1>
