@@ -1,0 +1,20 @@
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" [class.active]="aba == 'home'"
+            (click)="aba = 'home'">Home</a>
+        <a class="navbar-brand" [class.active]="aba == 'feature'"
+            (click)="aba = 'feature'">Feature</a>
+        <a class="navbar-brand" [class.active]="aba == 'pricing'"
+            (click)="aba = 'pricing'">Pricing</a>
+        <a class="navbar-brand" [class.active]="aba == 'other'"
+            (click)="aba = 'other'">Other</a>
+    </div>
+</nav>
+
+<div class="container" [ngSwitch]="aba">
+    <p *ngSwitchCase="'feature'">Feature em exibição</p>
+    <p *ngSwitchCase="'pricing'">Pricing em exibição</p>
+    <p *ngSwitchCase="'other'">Other em exibição</p>
+    <p *ngSwitchDefault>Home</p>
+
+</div>
