@@ -10,13 +10,14 @@ import { FormsModule } from '@angular/forms';
 import { InputPropertyComponent } from './input-property/input-property.component';
 import { OutputPropertyComponent } from './output-property/output-property.component';
 import { CicloComponent } from './ciclo/ciclo.component';
+import { DiretivaNgIfComponent } from './diretiva-ng-if/diretiva-ng-if.component';
 
 @NgModule({ //Decorator ou anotação da classe que é um módulo e que agrupa e organiza componentes, services, etc... de uma determinado pacote ou feature
   declarations: [ // declarations, imports, providers, bootstrap são metadados
     AppComponent, // em declarations é declarado os componentes, diretivas e pipes do módulo
     MeuPrimeiroComponenteComponent, 
     DataBindingComponent, 
-    InputPropertyComponent, OutputPropertyComponent, CicloComponent //expor o componente para outras classes
+    InputPropertyComponent, OutputPropertyComponent, CicloComponent, DiretivaNgIfComponent //expor o componente para outras classes
   ],
   imports: [
     BrowserModule, // módulos externos que serão importados nos componentes ou neste módulo
