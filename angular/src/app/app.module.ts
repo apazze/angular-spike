@@ -12,13 +12,14 @@ import { OutputPropertyComponent } from './output-property/output-property.compo
 import { CicloComponent } from './ciclo/ciclo.component';
 import { DiretivaNgIfComponent } from './diretiva-ng-if/diretiva-ng-if.component';
 import { DiretivaNgswitchComponent } from './diretiva-ngswitch/diretiva-ngswitch.component';
+import { DiretivaNgforComponent } from './diretiva-ngfor/diretiva-ngfor.component';
 
 @NgModule({ //Decorator ou anotação da classe que é um módulo e que agrupa e organiza componentes, services, etc... de uma determinado pacote ou feature
   declarations: [ // declarations, imports, providers, bootstrap são metadados
     AppComponent, // em declarations é declarado os componentes, diretivas e pipes do módulo
     MeuPrimeiroComponenteComponent, 
     DataBindingComponent, 
-    InputPropertyComponent, OutputPropertyComponent, CicloComponent, DiretivaNgIfComponent, DiretivaNgswitchComponent //expor o componente para outras classes
+    InputPropertyComponent, OutputPropertyComponent, CicloComponent, DiretivaNgIfComponent, DiretivaNgswitchComponent, DiretivaNgforComponent //expor o componente para outras classes
   ],
   imports: [
     BrowserModule, // módulos externos que serão importados nos componentes ou neste módulo
