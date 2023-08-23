@@ -1,0 +1,4 @@
+<p>Descrição: {{ tarefa.desc }}</p>
+<!-- <p>Responsável: {{ tarefa.responsavel.nome }}</p> Vai dar null pointer -->
+<!-- <p>Responsável: {{ tarefa.responsavel != null ? tarefa.responsavel.nome : ''}}</p> Funciona mas é feio -->
+<p>Responsável: {{ tarefa.responsavel?.usuario?.nome}}</p>
