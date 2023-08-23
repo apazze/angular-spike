@@ -16,6 +16,7 @@ import { DiretivaNgforComponent } from './diretiva-ngfor/diretiva-ngfor.componen
 import { DiretivaNgclassComponent } from './diretiva-ngclass/diretiva-ngclass.component';
 import { DiretivaNgstyleComponent } from './diretiva-ngstyle/diretiva-ngstyle.component';
 import { OperadorElvisComponent } from './operador-elvis/operador-elvis.component';
+import { ExemploNgcontentComponent } from './exemplo-ngcontent/exemplo-ngcontent.component';
 
 @NgModule({ //Decorator ou anotação da classe que é um módulo e que agrupa e organiza componentes, services, etc... de uma determinado pacote ou feature
   declarations: [ // declarations, imports, providers, bootstrap são metadados
@@ -30,7 +31,7 @@ import { OperadorElvisComponent } from './operador-elvis/operador-elvis.componen
     DiretivaNgforComponent, 
     DiretivaNgclassComponent, 
     DiretivaNgstyleComponent, 
-    OperadorElvisComponent //expor o componente para outras classes
+    OperadorElvisComponent, ExemploNgcontentComponent //expor o componente para outras classes
   ],
   imports: [
     BrowserModule, // módulos externos que serão importados nos componentes ou neste módulo
