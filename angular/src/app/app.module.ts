@@ -17,6 +17,8 @@ import { DiretivaNgclassComponent } from './diretiva-ngclass/diretiva-ngclass.co
 import { DiretivaNgstyleComponent } from './diretiva-ngstyle/diretiva-ngstyle.component';
 import { OperadorElvisComponent } from './operador-elvis/operador-elvis.component';
 import { ExemploNgcontentComponent } from './exemplo-ngcontent/exemplo-ngcontent.component';
+import { FundoAmareloDirective } from './shared/fundo-amarelo.directive';
+import { DiretivasCustomizadasComponent } from './diretivas-customizadas/diretivas-customizadas.component';
 
 @NgModule({ //Decorator ou anotação da classe que é um módulo e que agrupa e organiza componentes, services, etc... de uma determinado pacote ou feature
   declarations: [ // declarations, imports, providers, bootstrap são metadados
@@ -31,7 +33,10 @@ import { ExemploNgcontentComponent } from './exemplo-ngcontent/exemplo-ngcontent
     DiretivaNgforComponent, 
     DiretivaNgclassComponent, 
     DiretivaNgstyleComponent, 
-    OperadorElvisComponent, ExemploNgcontentComponent //expor o componente para outras classes
+    OperadorElvisComponent, 
+    ExemploNgcontentComponent, 
+    FundoAmareloDirective, 
+    DiretivasCustomizadasComponent //expor o componente para outras classes
   ],
   imports: [
     BrowserModule, // módulos externos que serão importados nos componentes ou neste módulo
