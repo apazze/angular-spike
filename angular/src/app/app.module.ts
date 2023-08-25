@@ -19,6 +19,7 @@ import { OperadorElvisComponent } from './operador-elvis/operador-elvis.componen
 import { ExemploNgcontentComponent } from './exemplo-ngcontent/exemplo-ngcontent.component';
 import { FundoAmareloDirective } from './shared/fundo-amarelo.directive';
 import { DiretivasCustomizadasComponent } from './diretivas-customizadas/diretivas-customizadas.component';
+import { HighlightMouseDirective } from './shared/highlight-mouse.directive';
 
 @NgModule({ //Decorator ou anotação da classe que é um módulo e que agrupa e organiza componentes, services, etc... de uma determinado pacote ou feature
   declarations: [ // declarations, imports, providers, bootstrap são metadados
@@ -36,7 +37,7 @@ import { DiretivasCustomizadasComponent } from './diretivas-customizadas/diretiv
     OperadorElvisComponent, 
     ExemploNgcontentComponent, 
     FundoAmareloDirective, 
-    DiretivasCustomizadasComponent //expor o componente para outras classes
+    DiretivasCustomizadasComponent, HighlightMouseDirective //expor o componente para outras classes
   ],
   imports: [
     BrowserModule, // módulos externos que serão importados nos componentes ou neste módulo
