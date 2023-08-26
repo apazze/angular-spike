@@ -9,3 +9,11 @@
 <p highlightMouse>
     Texto com highlight quando passo o mouse.
 </p>
+
+<!-- <p highlight [defaultColor]="'grey'" [highLightColor]="'red'"> defaultColor é enviado ao Input()
+    Texto com highlight com cores customizadas.
+</p> -->
+
+<p [highlight]="'red'" [defaultColor]="'grey'"> <!-- Deixando mais enxuto, pode usar a propriedade do @Input como mesmo no do seletor -->
+    Texto com highlight com cores customizadas.
+</p>
