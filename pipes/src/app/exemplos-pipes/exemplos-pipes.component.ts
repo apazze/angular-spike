@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-exemplos-pipes',
@@ -19,6 +20,19 @@ export class ExemplosPipesComponent {
   livros: string[] = ['Java', 'Angular', 'TypeScript'];
 
   filtro!: string;
+
+  livroBuscaAsync = new Promise((resolve, reject) => {
+    setTimeout(() => resolve('Valor recebido assincrono'), 2000) // Depois de 2 seg é que o valor sera atribuido a livroBuscaAsync
+  });
+  
+  
+  livroBuscaAsyncObservable = new Observable(observador => {
+    setTimeout(() => {
+      observador.next("Valor recebido assincrono com Observable");
+    }, 2000);
+  });
+
+
 
   addLivro(livro: string) {
     this.livros.push(livro);

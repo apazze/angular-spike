@@ -30,3 +30,8 @@
         {{ liv }}
     </li>
 </ul>
+
+<h5>Buscando valores assincronos com Promise:</h5>
+
+<p>{{ livroBuscaAsync | async}}</p> <!-- Esse pipe async pega somente o valor do objeto Promise-->
+<p>{{ livroBuscaAsyncObservable | async}}</p> <!-- Esse pipe async pega somente o valor do objeto Observable-->
