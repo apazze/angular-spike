@@ -10,6 +10,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { CursoDetalheComponent } from './curso-detalhe/curso-detalhe.component';
+import { CursosService } from './cursos/cursos.service';
+import { MatListModule } from '@angular/material/list';
+import { CursoNaoEncontradoComponent } from './curso-nao-encontrado/curso-nao-encontrado.component';
 
 @NgModule({
   declarations: [
@@ -17,16 +20,18 @@ import { CursoDetalheComponent } from './curso-detalhe/curso-detalhe.component';
     HomeComponent,
     LoginComponent,
     CursosComponent,
-    CursoDetalheComponent
+    CursoDetalheComponent,
+    CursoNaoEncontradoComponent
   ],
   imports: [
     BrowserModule,
     routing,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatListModule
   ],
-  providers: [],
+  providers: [CursosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
