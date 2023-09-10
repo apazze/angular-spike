@@ -9,6 +9,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app.routing.module';
 import { CursosModule } from './cursos/cursos.module';
+import { AlunosModule } from './alunos/alunos.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CursosModule } from './cursos/cursos.module';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
-    CursosModule
+    CursosModule,
+    AlunosModule
   ],
   bootstrap: [AppComponent]
 })
