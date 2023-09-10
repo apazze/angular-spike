@@ -499,8 +499,17 @@
   <mat-toolbar-row>
     <span><a routerLink="cursos" routerLinkActive="active">Cursos</a></span>
   </mat-toolbar-row>
+
+  <mat-toolbar-row>
+    <span><a [routerLink]="['curso', idCurso.value]" routerLinkActive="active">Curso com id</a></span>
+  </mat-toolbar-row>
 </mat-toolbar>
 
 <div class="container center-align">
-  <router-outlet></router-outlet>
+  <router-outlet>
+
+    <p>Entre com o id do curso: <input #idCurso></p> 
+
+
+  </router-outlet>
 </div>
