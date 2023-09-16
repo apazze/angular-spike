@@ -487,7 +487,7 @@
 
 <!-- <mat-slide-toggle>Toggle me!</mat-slide-toggle> -->
 
-<mat-toolbar color="primary">
+<!-- <mat-toolbar color="primary">
   <mat-toolbar-row>
     <span><a routerLink="">Home</a></span>
   </mat-toolbar-row>
@@ -497,7 +497,7 @@
   </mat-toolbar-row>
 
   <mat-toolbar-row>
-    <span><a routerLink="cursos" routerLinkActive="active" [queryParams]="{pagina:1}">Cursos</a></span> <!-- Pagina 1 sendo chumbado so por exemplo, mas deve ser por variavel-->
+    <span><a routerLink="cursos" routerLinkActive="active" [queryParams]="{pagina:1}">Cursos</a></span> Pagina 1 sendo chumbado so por exemplo, mas deve ser por variavel
   </mat-toolbar-row>
 
   <mat-toolbar-row>
@@ -507,13 +507,23 @@
   <mat-toolbar-row>
     <span><a routerLink="alunos" routerLinkActive="active">Alunos</a></span>
   </mat-toolbar-row>
-</mat-toolbar>
+</mat-toolbar> 
+-->
+
+<nav>
+  <div class="nav-wrapper">
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <li><a routerLink="">Home</a></li>
+      <li><a routerLink="login" routerLinkActive="active">Login</a></li>
+      <li><a routerLink="cursos" routerLinkActive="active" [queryParams]="{pagina:1}">Cursos</a></li>
+      <li><a routerLink="alunos" routerLinkActive="active">Alunos</a></li>
+    </ul>
+  </div>
+</nav>
 
 <div class="container center-align">
     <p>Entre com o id do curso: <input (blur)="idCurso" #idCurso></p> 
     <p>#################################################################</p>
     <br><br><br>
-
-
 </div>
 <router-outlet></router-outlet>
