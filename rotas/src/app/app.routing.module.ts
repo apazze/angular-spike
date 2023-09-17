@@ -6,6 +6,7 @@ import { HomeComponent } from "./home/home.component";
 import { LoginComponent } from "./login/login.component";
 import { AuthGuard } from "./guard/auth.guard";
 import { CursosGuard } from "./guard/cursos.guard";
+import { PaginaNaoEncontradaComponent } from "./pagina-nao-encontrada/pagina-nao-encontrada.component";
 // import { AlunosGuard } from "./guard/alunos.guard.";
 
 const appRoutes: Routes = [
@@ -23,8 +24,10 @@ const appRoutes: Routes = [
         /* , canActivateChild: [AlunosGuard] O child pode-se aplicar por exemplo pra ver se o usuario tem acesso para editar. Movido para o escopo local de Alunos */
         canLoad: [AuthGuard]
     },
-    { path: '', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent }, //quando o link faz parte do root a barra "/" é opcional
+    { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+    { path: '', redirectTo: '/home', pathMatch: 'full'},
+    { path: '**', component: PaginaNaoEncontradaComponent },
 ];
 
 @NgModule({
