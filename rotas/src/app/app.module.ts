@@ -10,6 +10,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app.routing.module';
 import { AuthService } from './login/auth.service';
+import { AuthGuard } from './guard/auth.guard';
 // import { CursosModule } from './cursos/cursos.module';
 // import { AlunosModule } from './alunos/alunos.module';
 
@@ -29,7 +30,7 @@ import { AuthService } from './login/auth.service';
     // CursosModule, // removido por causa do lazy loading
     // AlunosModule // removido por causa do lazy loading
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard], // Guarda de Rotas, da acesso aos componentes somente se tiver autenticado (canActivate)
   bootstrap: [AppComponent]
 })
 export class AppModule { }
