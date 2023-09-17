@@ -8,6 +8,7 @@ import { AlunosRoutingModule } from './alunos.routing.module';
 import { AlunosService } from './alunos.service';
 import { FormsModule } from '@angular/forms';
 import { AlunosDeactivateGuard } from '../guard/alunos-deactivate.guard';
+import { AlunoDetalheResolver } from './guard/aluno-detalhe.resolver';
 
 @NgModule({
     imports: [
@@ -23,7 +24,8 @@ import { AlunosDeactivateGuard } from '../guard/alunos-deactivate.guard';
     ],
     providers: [
         AlunosService, // Só os componentes internos tem acesso
-        AlunosDeactivateGuard // Guardiao para nao sair do formulario com dados preenchidos sem querer
+        AlunosDeactivateGuard, // Guardiao para nao sair do formulario com dados preenchidos sem querer
+        AlunoDetalheResolver // Resolver serve para carregar os dados antes da rota ser ativada (componente renderizado ou inicializado)
     ],
 })
 export class AlunosModule { }
