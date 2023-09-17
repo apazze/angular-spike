@@ -3,18 +3,19 @@
     <div class="card-panel teal lighten-2">
       <p>Lista de alunos</p>
     </div>
-    <ul>
-      <li
+    <div class="collection">
+      <a
+        class="collection-item"
         *ngFor="let aluno of alunos"
         [routerLink]="[aluno.id]"
         routerLinkActive="router-link-active"
       >
         {{ aluno.nome }}
-      </li>
-    </ul>
+      </a>
+    </div>
   </div>
 
   <div class="col s6">
-    <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
   </div>
 </div>

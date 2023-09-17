@@ -515,15 +515,22 @@
     <ul id="nav-mobile" class="left hide-on-med-and-down">
       <li><a routerLink="">Home</a></li>
       <li><a routerLink="login" routerLinkActive="active">Login</a></li>
-      <li><a routerLink="cursos" routerLinkActive="active" [queryParams]="{pagina:1}">Cursos</a></li>
+      <li>
+        <a
+          routerLink="cursos"
+          routerLinkActive="active"
+          [queryParams]="{ pagina: 1 }"
+          >Cursos</a
+        >
+      </li>
       <li><a routerLink="alunos" routerLinkActive="active">Alunos</a></li>
     </ul>
   </div>
 </nav>
 
-<div class="container center-align">
-    <p>Entre com o id do curso: <input (blur)="idCurso" #idCurso></p> 
+<div class="container">
+  <!-- <p>Entre com o id do curso: <input (blur)="idCurso" #idCurso></p> 
     <p>#################################################################</p>
-    <br><br><br>
+    <br><br><br> -->
+  <router-outlet></router-outlet>
 </div>
-<router-outlet></router-outlet>
