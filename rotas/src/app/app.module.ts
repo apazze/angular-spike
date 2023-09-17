@@ -8,8 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app.routing.module';
-import { CursosModule } from './cursos/cursos.module';
-import { AlunosModule } from './alunos/alunos.module';
+// import { CursosModule } from './cursos/cursos.module';
+// import { AlunosModule } from './alunos/alunos.module';
 
 @NgModule({
   declarations: [
@@ -23,8 +23,8 @@ import { AlunosModule } from './alunos/alunos.module';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
-    CursosModule,
-    AlunosModule
+    // CursosModule, // removido por causa do lazy loading
+    // AlunosModule // removido por causa do lazy loading
   ],
   bootstrap: [AppComponent]
 })
