@@ -20,6 +20,7 @@
           type="text"
           [(ngModel)]="aluno.nome"
           class="validate"
+          (input)="onInput()"
         />
         <label for="nome" class="active">Nome</label>
       </div>

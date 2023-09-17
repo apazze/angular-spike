@@ -7,6 +7,7 @@ import { AlunoDetalheComponent } from './aluno-detalhe/aluno-detalhe.component';
 import { AlunosRoutingModule } from './alunos.routing.module';
 import { AlunosService } from './alunos.service';
 import { FormsModule } from '@angular/forms';
+import { AlunosDeactivateGuard } from '../guard/alunos-deactivate.guard';
 
 @NgModule({
     imports: [
@@ -20,6 +21,9 @@ import { FormsModule } from '@angular/forms';
         AlunoFormComponent,
         AlunoDetalheComponent
     ],
-    providers: [AlunosService], // Só os componentes internos tem acesso
+    providers: [
+        AlunosService, // Só os componentes internos tem acesso
+        AlunosDeactivateGuard // Guardiao para nao sair do formulario com dados preenchidos sem querer
+    ],
 })
 export class AlunosModule { }
