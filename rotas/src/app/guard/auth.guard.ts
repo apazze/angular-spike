@@ -32,6 +32,12 @@ export class AuthGuard implements CanActivate, CanLoad {
     return false;
   }
 
+  /***
+   * Foi feito o teste de logar na aplicação com usuario autorizado, após atualizar a pagina e 
+   * ser redirecionado para login de novo, os modulos foram carregados na aba de rede no debbuger do
+   * navegador. O canLoad resolve isso
+   */
+
   canLoad(
     route: Route
   ): Observable<boolean> | Promise<boolean> | boolean {
