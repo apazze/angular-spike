@@ -1,7 +1,7 @@
 <form #f="ngForm" (ngSubmit)="onSubmit(f)">
   <div class="form-group">
     <label for="nome" class="form-label">Nome</label>
-    <input type="text" class="form-control" id="nome" placeholder="Nome" name="nome" ngModel/>
+    <input type="text" class="form-control" id="nome" placeholder="Nome" name="nome" [(ngModel)]="usuario.nome"/>
   </div>
   <br />
   <div class="form-group">
@@ -12,7 +12,7 @@
       id="email"
       placeholder="nome@email.com"
       name="email"
-      ngModel
+      [(ngModel)]="usuario.email"
     />
     <br />
   </div>
