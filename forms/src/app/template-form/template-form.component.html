@@ -8,11 +8,16 @@
     placeholder="Nome" 
     name="nome" 
     [(ngModel)]="usuario.nome" 
-    required #nome/>
+    required #nome="ngModel"/>
   </div>
   <!-- <div>
     {{ nome.className }}
   </div> -->
+
+  <div *ngIf="!nome.valid && nome.touched" class="alert alert-danger" role="alert">
+    Nome é obrigatório.
+  </div>
+
   <br />
   <div class="form-group">
     <label for="email" class="form-label">E-mail</label>
