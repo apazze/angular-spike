@@ -14,7 +14,8 @@ export class TemplateFormComponent {
 
   usuario: any = {
     nome: null,
-    email: null
+    email: null,
+    rua: null
   }
 
   onSubmit(form: any) {
