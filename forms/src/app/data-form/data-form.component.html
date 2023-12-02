@@ -1,4 +1,4 @@
-  <form class="was-validated row g-3" [formGroup]="formulario">
+  <form class="was-validated row g-3" [formGroup]="formulario" (ngSubmit)="onSubmit()">
 
     <div class="col-md-12">
         <label for="nome" class="form-label">Nome</label>
@@ -24,5 +24,7 @@
     </div>
      
     <button type="submit" class="btn btn-primary mb-3">Submit</button>
+    <button class="btn" (click)="resetar()">Cancel</button>
+
     <app-form-debug [form]="formulario"></app-form-debug>
   </form>

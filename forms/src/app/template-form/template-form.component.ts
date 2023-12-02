@@ -25,7 +25,11 @@ export class TemplateFormComponent {
     console.log(form)
 
     this.http.post('https://httpbin.org/post', JSON.stringify(form.value))
-    .subscribe(dados => console.log(dados));
+    .subscribe(dados => {
+      console.log(dados);
+      //reset do form em caso de sucesso
+      form.form.reset();
+    });
   }
 
   consultaCep(cep: any, form: any) {
