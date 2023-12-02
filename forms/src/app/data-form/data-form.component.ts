@@ -25,4 +25,8 @@ export class DataFormComponent implements OnInit{
       email: [null]
     });
   }
+
+  onSubmit(form: any) {
+    
+  }
 }
