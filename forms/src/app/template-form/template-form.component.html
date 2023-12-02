@@ -50,6 +50,11 @@
   <app-form-debug [form]="f"></app-form-debug>
 </form>
 
+
+<!-- ################################################## -->
+
+
+
 <h6>Novo Formulario criado a partir do Bootstrap 5:</h6>
 
 <form
@@ -84,7 +89,7 @@
         ngModel
         required
         #cep="ngModel"
-        (blur)="consultaCep($event)"
+        (blur)="consultaCep($event, formulario)"
       />
       <div *ngIf="!cep.valid && cep.touched" class="invalid-feedback">
         Informe seu cep
@@ -113,6 +118,7 @@
         aria-describedby="complemento"
         name="complemento"
         ngModel
+        required
         #complemento="ngModel"
       />
     </div>
@@ -124,8 +130,8 @@
         class="form-control"
         aria-describedby="rua"
         name="rua"
-        [ngModel]="usuario.rua"
-        disabled
+        ngModel
+        required
         #rua="ngModel"
       />
       <div *ngIf="!rua.valid && rua.touched" class="invalid-feedback">
@@ -141,7 +147,7 @@
         aria-describedby="bairro"
         name="bairro"
         ngModel
-        disabled
+        required
         #bairro="ngModel"
       />
       <div *ngIf="!bairro.valid && bairro.touched" class="invalid-feedback">
@@ -157,7 +163,7 @@
         aria-describedby="cidade"
         name="cidade"
         ngModel
-        disabled
+        required
         #cidade="ngModel"
       />
       <div *ngIf="!cidade.valid && cidade.touched" class="invalid-feedback">
@@ -173,7 +179,7 @@
         aria-describedby="estado"
         name="estado"
         ngModel
-        disabled
+        required
         #estado="ngModel"
       />
       <div *ngIf="!estado.valid && estado.touched" class="invalid-feedback">
@@ -181,12 +187,12 @@
       </div>
     </div>
   </div>
-
-  <br />
-  <button type="submit" class="btn btn-primary">Submit</button>
-
-  <app-form-debug [form]="formulario"></app-form-debug>
 </form>
+<br />
+<button type="submit" class="btn btn-primary">Submit</button>
+
+<app-form-debug [form]="formulario"></app-form-debug>
+
 <!-- 
 <form class="row g-3">
   <div class="col-md-4">
