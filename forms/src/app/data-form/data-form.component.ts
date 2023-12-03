@@ -44,18 +44,36 @@ export class DataFormComponent implements OnInit{
   onSubmit() {
     console.log(this.formulario.value)
 
-    this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
-    .subscribe({
-      next: (dados: any) => {
-        console.log(dados);
-        //reseta o form em caso de sucesso
-        this.resetar();
-      },
-      error: (e: any) => {
-        console.log(e);
-        alert(e);
-      },
-      complete: () => console.log('Complete')
+    if(this.formulario.valid) {
+      this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
+      .subscribe({
+        next: (dados: any) => {
+          console.log(dados);
+          //reseta o form em caso de sucesso
+          this.resetar();
+        },
+        error: (e: any) => {
+          console.log(e);
+          alert(e);
+        },
+        complete: () => console.log('Complete')
+      });
+    } else {
+      console.log('Form invalido')
+      this.verificaValidacoesForm(this.formulario);
+    }
+  }
+
+  verificaValidacoesForm(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach((campo: any) => {
+      console.log(campo);
+      const controle = formGroup.get(campo);
+      controle?.markAsDirty(); // marca como sujo ou modificado para apresentar ao usuario que deve corrigir
+
+      // Recursivo! Verifica ate chegar no ultimo nivel no caso de endereço que é um grupo
+      if(controle instanceof FormGroup) {
+        this.verificaValidacoesForm(controle);
+      }
     });
   }
 
@@ -75,7 +93,7 @@ export class DataFormComponent implements OnInit{
     // this.formulario.controls[campo] // pode fazer assim tbm!!
 
     return !this.formulario.get(campo)?.valid &&
-            this.formulario.get(campo)?.touched;
+            (this.formulario.get(campo)?.touched || this.formulario.get(campo)?.dirty); // dirty -> sofreu modificação
 
   }
 
