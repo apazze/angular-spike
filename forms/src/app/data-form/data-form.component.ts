@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DropDownService } from '../shared/services/drop-down.service';
 import { EstadoBr } from '../shared/models/EstadoBr';
+import { ConsultaCepService } from '../shared/services/consulta-cep.service';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-data-form',
@@ -17,7 +19,8 @@ export class DataFormComponent implements OnInit{
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,
-    private dropDownService: DropDownService
+    private dropDownService: DropDownService,
+    private cepService: ConsultaCepService,
     ) {}
 
   ngOnInit(): void {
@@ -119,22 +122,11 @@ export class DataFormComponent implements OnInit{
   consultaCep() {
     let cep = this.formulario.get('endereco.cep')?.value;
 
-    cep = cep.replace(/\D/g, ''); // só digitos
-
-    if (cep != "") {
-
-      //Expressão regular para validar o CEP.
-      var validacep = /^[0-9]{8}$/;
-
-      if (validacep.test(cep)) {
-
-        this.resetaDadosForm()
-
-        this.http.get(`https://viacep.com.br/ws/${cep}/json`)
-          .subscribe(data => this.populaDadosForm(data));
-      }
+    if(cep != null && cep!== '') { //cep != null -> verifica se não é null e tbm undefined!
+      this.cepService.consultaCep(cep).subscribe(data => this.populaDadosForm(data));
     }
-    console.log(cep)
+
+    return of ({});
   }
 
   // A diferença do setValue é que as props que nao passar receberão nulo,

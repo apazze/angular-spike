@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
+import { ConsultaCepService } from '../shared/services/consulta-cep.service';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-template-form',
@@ -13,7 +15,10 @@ export class TemplateFormComponent {
   //   nome: 'Alisson',
   //   email: 'alisson@email.com'
   // }
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private cepService: ConsultaCepService
+  ) { }
 
   usuario: any = {
     nome: null,
@@ -36,21 +41,11 @@ export class TemplateFormComponent {
     var filterCep = (cep.target as HTMLInputElement).value;
     filterCep = filterCep.replace(/\D/g, ''); // só digitos
 
-    if (filterCep != "") {
-      
-      //Expressão regular para validar o CEP.
-      var validacep = /^[0-9]{8}$/;
-
-      if (validacep.test(filterCep)) {
-
-        this.resetaDadosForm(form);
-
-        this.http.get(`https://viacep.com.br/ws/${filterCep}/json`)
-          .subscribe(data => this.populaDadosForm(data, form));
-      }
+    if(filterCep != null && filterCep!== '') { //cep != null -> verifica se não é null e tbm undefined!
+      this.cepService.consultaCep(filterCep).subscribe(data => this.populaDadosForm(data, form));
     }
 
-    console.log(filterCep)
+    return of ({});
   }
 
   populaDadosForm(dados: any, formulario: NgForm) {
