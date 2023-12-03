@@ -1,5 +1,5 @@
 <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-  <div class="form-group">
+  <div class="form-group" [ngClass]="aplicaCssErro(nome)">
     <div class="col-1">
       <!--Digitar div.col-1 e o VSCode tem um snippet-->
       <label for="nome" class="form-label">Nome</label>

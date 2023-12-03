@@ -93,5 +93,15 @@ export class TemplateFormComponent {
     });
   }
 
+  aplicaCssErro(campo: any) {
+    return {
+      'has-error': this.verificaValidTouched(campo),
+      'has-feedback': this.verificaValidTouched(campo)
+    }
+  }
+
+  verificaValidTouched(campo: any) {
+    return !campo.valid && campo.touched;
+  }
 
 }
