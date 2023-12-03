@@ -37,7 +37,7 @@ export class DataFormComponent implements OnInit{
         cidade: [null, Validators.required],
         estado: [null, Validators.required]
       })
-      
+
     });
   }
 
@@ -87,5 +87,54 @@ export class DataFormComponent implements OnInit{
   }
 
   // o JS trata arrays e objetos como dicionario => chave e valor
+
+  consultaCep() {
+    let cep = this.formulario.get('endereco.cep')?.value;
+
+    cep = cep.replace(/\D/g, ''); // só digitos
+
+    if (cep != "") {
+
+      //Expressão regular para validar o CEP.
+      var validacep = /^[0-9]{8}$/;
+
+      if (validacep.test(cep)) {
+
+        this.resetaDadosForm()
+
+        this.http.get(`https://viacep.com.br/ws/${cep}/json`)
+          .subscribe(data => this.populaDadosForm(data));
+      }
+    }
+    console.log(cep)
+  }
+
+  // A diferença do setValue é que as props que nao passar receberão nulo,
+  // ja o patchValue atualiza só as passadas e nao meche nos valores das outras
+  resetaDadosForm() {
+    this.formulario.patchValue({
+      endereco: {
+        rua: null,
+        complemento: null,
+        bairro: null,
+        cidade: null,
+        estado: null
+      }
+    });
+  }
+
+  populaDadosForm(dados: any) {
+    this.formulario.patchValue({
+      endereco: {
+        rua: dados.logradouro,
+        complemento: dados.complemento,
+        bairro: dados.bairro,
+        cidade: dados.localidade,
+        estado: dados.uf
+      }
+    });
+
+    this.formulario.get('nome')?.setValue('Setando nome apenas para exemplo')
+  }
 
 }
