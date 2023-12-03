@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -14,7 +15,8 @@ import { of } from 'rxjs';
 export class DataFormComponent implements OnInit{
 
   formulario!: FormGroup;
-  estados!: EstadoBr[];
+  // estados!: EstadoBr[];
+  estados!: Observable<EstadoBr[]>;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -31,11 +33,16 @@ export class DataFormComponent implements OnInit{
     //   email: new FormControl(null)
     // });
 
-    this.dropDownService.getEstadosBr()
-    .subscribe((dados: any) => {
-      console.log(dados)
-      this.estados = dados
-    });
+    //forma a evitar vazamento de memoria com a destruição do componente não houver o unsubscribe
+
+    // this.dropDownService.getEstadosBr()
+    // .subscribe((dados: any) => {
+    //   console.log(dados)
+    //   this.estados = dados
+    // });
+
+    //correto:
+    this.estados = this.dropDownService.getEstadosBr(); // com o pipe async no template ele se encarrega de fazer o unsubscribe
 
     this.formulario = this.formBuilder.group({
       nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],

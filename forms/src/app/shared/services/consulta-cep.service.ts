@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { EstadoBr } from '../models/EstadoBr';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class ConsultaCepService {
       var validacep = /^[0-9]{8}$/;
 
       if (validacep.test(cep)) {
-        return this.http.get(`https://viacep.com.br/ws/${cep}/json`);
+        return this.http.get<EstadoBr[]>(`https://viacep.com.br/ws/${cep}/json`);
       } else {
         return of ({})
       }
