@@ -51,4 +51,30 @@ export class DataFormComponent implements OnInit{
   resetar(): void {
     this.formulario.reset();
   }
+
+  aplicaCssErro(campo: any) {
+    return {
+      'has-error': this.verificaValidTouched(campo),
+      'has-feedback': this.verificaValidTouched(campo)
+    }
+  }
+
+  verificaValidTouched(campo: any) {
+
+    // this.formulario.controls[campo] // pode fazer assim tbm!!
+
+    return !this.formulario.get(campo)?.valid &&
+            this.formulario.get(campo)?.touched;
+
+  }
+
+  verificaEmailInvalido() {
+    let campoEmail = this.formulario.get('email');
+    if(campoEmail?.errors) {
+      return campoEmail?.errors['email'] && campoEmail.touched
+    }
+  }
+
+  // o JS trata arrays e objetos como dicionario => chave e valor
+
 }

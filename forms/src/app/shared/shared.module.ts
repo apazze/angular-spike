@@ -12,7 +12,8 @@ import { CampoControlErroComponent } from './campo-control-erro/campo-control-er
     CommonModule
   ],
   exports: [
-    FormDebugComponent
+    FormDebugComponent,
+    CampoControlErroComponent
   ]
 })
 export class SharedModule { }

@@ -14,21 +14,11 @@
         #nome="ngModel"
       />
     </div>
+
+    <app-campo-control-erro [mostrarErro]="verificaValidTouched(nome)" msgErro="Nome é obrigatório."></app-campo-control-erro>
+
   </div>
 
-  <!-- <div>
-    {{ nome.className }}
-  </div> -->
-
-  <div
-    *ngIf="!nome.valid && nome.touched"
-    class="alert alert-danger"
-    role="alert"
-  >
-    Nome é obrigatório.
-  </div>
-
-  <br />
   <div class="form-group">
     <label for="email" class="form-label">E-mail</label>
     <input
