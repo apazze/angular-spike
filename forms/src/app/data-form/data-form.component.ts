@@ -7,6 +7,7 @@ import { EstadoBr } from '../shared/models/EstadoBr';
 import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 import { of } from 'rxjs';
 import { FormValidations } from '../shared/FormValidations';
+import { VerificaEmailService } from './services/verifica-email.service';
 
 @Component({
   selector: 'app-data-form',
@@ -28,9 +29,12 @@ export class DataFormComponent implements OnInit{
     private http: HttpClient,
     private dropDownService: DropDownService,
     private cepService: ConsultaCepService,
+    private verificarEmailService: VerificaEmailService
     ) {}
 
   ngOnInit(): void {
+
+    this.verificarEmailService.verificarEmail('').subscribe();
 
     // + verboso (trabalhoso)
     // this.formulario = new FormGroup({
