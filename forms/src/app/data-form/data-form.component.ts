@@ -1,4 +1,4 @@
-import { Observable, map } from 'rxjs';
+import { Observable, distinctUntilChanged, map, switchMap, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -78,6 +78,22 @@ export class DataFormComponent implements OnInit{
       termos: [null, Validators.pattern('true')],
       frameworks: this.buildFrameworks() //FormArray -> usado para multiplos valores
     });
+
+    // this.formulario.valueChanges ou this.formulario.statusChanges ou this.formulario.status
+
+    // this.formulario.get('endereco.cep')?.valueChanges
+    // .subscribe(novoValue => console.log('Novo valor CEP: ', novoValue)); // imprime cada numero digitado
+
+    this.formulario.get('endereco.cep')?.statusChanges
+    .pipe(
+      distinctUntilChanged(), // só quando muda o status é acionado
+      tap(statusCep => console.log('status CEP: ', statusCep)),
+      switchMap(status => status === 'VALID' ?
+        this.cepService.consultaCep(this.formulario.get('endereco.cep')?.value)
+        : of() // retorna outro Observable caso tenha valor
+      )
+    )
+    .subscribe(dados => dados ? this.populaDadosForm(dados) : {});
   }
 
   buildFrameworks() {
