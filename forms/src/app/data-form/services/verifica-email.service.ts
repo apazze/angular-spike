@@ -13,6 +13,8 @@ export class VerificaEmailService {
     return this.http.get('assets/dados/verificarEmail.json')
     .pipe(
       map((dados: any) => dados.emails),
+      tap(console.log),
+      map((dados: {email: string}[]) => dados.filter(v => v.email === email)),
       tap(console.log)
     );
   }

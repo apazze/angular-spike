@@ -34,7 +34,7 @@ export class DataFormComponent implements OnInit{
 
   ngOnInit(): void {
 
-    this.verificarEmailService.verificarEmail('').subscribe();
+    this.verificarEmailService.verificarEmail('email@email.com').subscribe();
 
     // + verboso (trabalhoso)
     // this.formulario = new FormGroup({
