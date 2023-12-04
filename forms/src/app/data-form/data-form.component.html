@@ -193,12 +193,12 @@
     <div class="col-md-3" [ngClass]="aplicaCssErro('termos')">
       <div class="checkbox">
         <label class="checkbox-inline">
-          <input type="checkbox" formControlName="termos"> Aceito os termos.
+          <input type="checkbox" formControlName="termos" /> Aceito os termos.
         </label>
         <app-campo-control-erro
-        [mostrarErro]="verificaValidTouched('termos')"
-        msgErro="Termos é obrigatório."
-      ></app-campo-control-erro>
+          [mostrarErro]="verificaValidTouched('termos')"
+          msgErro="Termos é obrigatório."
+        ></app-campo-control-erro>
       </div>
     </div>
   </div>
@@ -206,12 +206,20 @@
   <div class="col-md-3" [ngClass]="aplicaCssErro('frameworks')">
     <label for="frameworks">Frameworks</label>
     <div id="frameworks" class="row">
-      <div class="checkbox" class="col-sm-4" formArrayName="frameworks"
-      *ngFor="let item of getFrameworksControls(); let i = index">
+      <div
+        class="checkbox"
+        class="col-sm-4"
+        formArrayName="frameworks"
+        *ngFor="let item of getFrameworksControls(); let i = index"
+      >
         <label class="checkbox-inline">
-          <input type="checkbox" [formControlName]="i"> {{ frameworks[i] }}
+          <input type="checkbox" [formControlName]="i" /> {{ frameworks[i] }}
         </label>
       </div>
+      <app-campo-control-erro
+        [mostrarErro]="!formulario.get('frameworks')?.valid"
+        msgErro="Selecione 1 opção."
+      ></app-campo-control-erro>
     </div>
   </div>
 

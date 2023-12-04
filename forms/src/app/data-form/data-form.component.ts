@@ -6,6 +6,7 @@ import { DropDownService } from '../shared/services/drop-down.service';
 import { EstadoBr } from '../shared/models/EstadoBr';
 import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 import { of } from 'rxjs';
+import { FormValidations } from '../shared/FormValidations';
 
 @Component({
   selector: 'app-data-form',
@@ -76,7 +77,7 @@ export class DataFormComponent implements OnInit{
 
   buildFrameworks() {
     const values = this.frameworks.map(v => new FormControl(false)); //false -> campo desmarcado
-    return this.formBuilder.array(values);
+    return this.formBuilder.array(values, FormValidations.requiredMinCheckbox(1));
   }
 
   onSubmit() {
@@ -115,6 +116,29 @@ export class DataFormComponent implements OnInit{
       this.verificaValidacoesForm(this.formulario);
     }
   }
+
+  // requiredMinCheckbox(min: number = 1) {
+  //   const validator = (formArray: FormArray) => {
+
+  //     //logica estruturada
+  //     // const values = formArray.controls;
+  //     // let totalChecked = 0;
+  //     // for (let i=0; i < values.length; i++) {
+  //     //   if(values[i].value) {
+  //     //     totalChecked++;
+  //     //   }
+  //     // }
+
+  //     //programação funcional e reativa
+
+  //     const totalChecked = formArray.controls
+  //     .map(v => v.value) // array de true ou false
+  //     .reduce((total, current) => current ? total + current : total, 0); // reduz a um unico valor, se o valor corrente é true, soma a var total que começa com '0' (ultimo parametro)
+
+  //     return totalChecked >= min ? null : { required: true };
+  //   }
+  //   return validator;
+  // }
 
   verificaValidacoesForm(formGroup: FormGroup) {
     Object.keys(formGroup.controls).forEach((campo: any) => {
