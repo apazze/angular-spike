@@ -54,8 +54,12 @@
         (blur)="consultaCep()"
       />
       <app-campo-control-erro
-        [mostrarErro]="verificaValidTouched('endereco.cep')"
+        [mostrarErro]="verificaRequired('endereco.cep')"
         msgErro="Cep é obrigatório."
+      ></app-campo-control-erro>
+      <app-campo-control-erro
+        [mostrarErro]="formulario.get('endereco.cep')?.hasError('cepInvalido')"
+        msgErro="Cep Inválido. Validação customizada implementada! Só aceita 8 digitos! Ver pattern com regex"
       ></app-campo-control-erro>
     </div>
 

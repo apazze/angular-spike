@@ -59,7 +59,7 @@ export class DataFormComponent implements OnInit{
       nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
       email: [null, [Validators.required, Validators.email]],
       endereco: this.formBuilder.group({
-        cep: [null, Validators.required],
+        cep: [null, [Validators.required, FormValidations.cepValidator]],
         numero: [null, Validators.required],
         complemento: [null],
         rua: [null, Validators.required],
@@ -81,7 +81,7 @@ export class DataFormComponent implements OnInit{
   }
 
   onSubmit() {
-    // console.log(this.formulario.value)
+    console.log(this.formulario)
 
     //Manipular os dados de frameworks, onde deseja enviar o array de strings e nao true ou false...
 
@@ -169,6 +169,12 @@ export class DataFormComponent implements OnInit{
     // this.formulario.controls[campo] // pode fazer assim tbm!!
 
     return !this.formulario.get(campo)?.valid &&
+            (this.formulario.get(campo)?.touched || this.formulario.get(campo)?.dirty); // dirty -> sofreu modificação
+
+  }
+
+  verificaRequired(campo: string) {
+    return this.formulario.get(campo)?.hasError('required') &&
             (this.formulario.get(campo)?.touched || this.formulario.get(campo)?.dirty); // dirty -> sofreu modificação
 
   }
