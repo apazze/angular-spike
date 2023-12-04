@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DropDownService } from '../shared/services/drop-down.service';
 import { EstadoBr } from '../shared/models/EstadoBr';
 import { ConsultaCepService } from '../shared/services/consulta-cep.service';
@@ -20,6 +20,7 @@ export class DataFormComponent implements OnInit{
   cargos!: any[];
   tecnologias!: any[];
   newsletter!: any[];
+  frameworks = ['Angular', 'React', 'Vue', 'Sencha'];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -68,15 +69,35 @@ export class DataFormComponent implements OnInit{
       cargo: [null],
       tecnologias: [null],
       newsletter: ['s'],
-      termos: [null, Validators.pattern('true')]
+      termos: [null, Validators.pattern('true')],
+      frameworks: this.buildFrameworks() //FormArray -> usado para multiplos valores
     });
   }
 
+  buildFrameworks() {
+    const values = this.frameworks.map(v => new FormControl(false)); //false -> campo desmarcado
+    return this.formBuilder.array(values);
+  }
+
   onSubmit() {
-    console.log(this.formulario.value)
+    // console.log(this.formulario.value)
+
+    //Manipular os dados de frameworks, onde deseja enviar o array de strings e nao true ou false...
+
+    let valuesSubmit = Object.assign({}, this.formulario.value) // copia para uma const vazia (o value é imutavel!)
+
+    // mandar só os que são true, mas o nome do framework correspondente... ex: 'angular'
+
+    valuesSubmit = Object.assign(valuesSubmit, {
+      frameworks: valuesSubmit.frameworks
+      .map((v: any, i: number) => v ? this.frameworks[i] : null)
+      .filter((v :any) => v !== null)
+    })
+
+    console.log(valuesSubmit);
 
     if(this.formulario.valid) {
-      this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
+      this.http.post('https://httpbin.org/post', JSON.stringify(valuesSubmit))
       .subscribe({
         next: (dados: any) => {
           console.log(dados);
@@ -186,6 +207,10 @@ export class DataFormComponent implements OnInit{
 
   setarTecnologias() {
     this.formulario.get('tecnologias')?.setValue(['java', 'javascript', 'php']);
+  }
+
+  getFrameworksControls() {
+    return this.formulario.get('frameworks') ? (<FormArray>this.formulario.get('frameworks')).controls : null;
   }
 
 }
