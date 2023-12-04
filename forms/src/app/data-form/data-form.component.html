@@ -11,13 +11,18 @@
 
       <!-- <app-campo-control-erro [mostrarErro]="verificaValidTouched('nome')" msgErro="Nome é obrigatório."></app-campo-control-erro> com método implementado no typescript-->
       <!-- ou usar uma div com *ngIf ou formulario.get('nome').valid tbm funfa -->
-      <app-campo-control-erro
+      <!-- <app-campo-control-erro
         [mostrarErro]="
           !formulario.controls['nome'].valid &&
           formulario.controls['nome'].touched
         "
         msgErro="Nome é obrigatório."
-      ></app-campo-control-erro>
+      ></app-campo-control-erro> -->
+
+      <!-- Criado novo componente de erros que encapsula + coisas e evita duplicação de codigo e padroniza as msgs-->
+
+      <app-error-msg [control]="formulario.controls['nome']" label="Nomeeeeeee"></app-error-msg>
+
     </div>
   </div>
 
