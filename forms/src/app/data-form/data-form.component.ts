@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -34,7 +34,7 @@ export class DataFormComponent implements OnInit{
 
   ngOnInit(): void {
 
-    this.verificarEmailService.verificarEmail('email@email.com').subscribe();
+    // this.verificarEmailService.verificarEmail('email@email.comm').subscribe();
 
     // + verboso (trabalhoso)
     // this.formulario = new FormGroup({
@@ -61,7 +61,7 @@ export class DataFormComponent implements OnInit{
 
     this.formulario = this.formBuilder.group({
       nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
-      email: [null, [Validators.required, Validators.email]],
+      email: [null, [Validators.required, Validators.email], [this.validarEmail.bind(this)]], // 3º parametro sao das validações assincronas, necessario usar o bind para o Angular nao se perder em relação ao escopo, associar (bind) a validação ao proprio componente
       confirmarEmail: [null, FormValidations.equalsTo('email')],
       endereco: this.formBuilder.group({
         cep: [null, [Validators.required, FormValidations.cepValidator]],
@@ -246,6 +246,11 @@ export class DataFormComponent implements OnInit{
 
   getFrameworksControls() {
     return this.formulario.get('frameworks') ? (<FormArray>this.formulario.get('frameworks')).controls : null;
+  }
+
+  validarEmail(formControl: FormControl) {
+    return this.verificarEmailService.verificarEmail(formControl.value)
+      .pipe(map(emailExiste => emailExiste ? { emailInvalido : true } : null))
   }
 
 }
