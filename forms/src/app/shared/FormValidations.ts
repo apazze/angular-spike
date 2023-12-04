@@ -1,9 +1,9 @@
-import { AbstractControl, FormArray, FormControl } from "@angular/forms";
+import { AbstractControl, FormArray, FormControl, FormGroup } from "@angular/forms";
 
 export class FormValidations {
 
   static requiredMinCheckbox(min = 1) {
-    const validator = (formArray: AbstractControl) => {
+    const validator = (formArray: AbstractControl) => { // esse é um controle do formulario, o angular se vira em nos fornecer essa instancia!
       /* const values = formArray.controls;
       let totalChecked = 0;
       for (let i = 0; i < values.length; i++) {
@@ -30,5 +30,30 @@ export class FormValidations {
       return validacep.test(cep) ? null : { cepInvalido : true } //Passa qq chave e qq valor! Dentro de controls, havera errors com esta chave e valor
     }
     return null;
+  }
+
+  static equalsTo(otherField: string) {
+    const validator = (formControl: FormControl) => {
+      if(otherField == null) {
+        throw new Error('É necessário informar um campo.');
+      }
+
+      //Validação para o formulario que ainda nao esta pronto e nao foi renderizado por completo!
+      if(!formControl.root || !(<FormGroup>formControl.root).controls) {
+        return null;
+      }
+
+      const field = formControl.root.get(otherField);
+      if(!field) {
+        throw new Error('É necessário informar um campo válido.');
+      }
+
+      if(field.value !== formControl.value) {
+        return { equalsTo : otherField } // nao é igual, maneira diferente de fazer retornando o valor e nao falso
+      }
+
+      return null; // são iguais!
+    }
+    return validator;
   }
 }
