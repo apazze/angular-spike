@@ -8,15 +8,15 @@ import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 import { of } from 'rxjs';
 import { FormValidations } from '../shared/FormValidations';
 import { VerificaEmailService } from './services/verifica-email.service';
+import { BaseFormComponent } from '../shared/base-form/base-form.component';
 
 @Component({
   selector: 'app-data-form',
   templateUrl: './data-form.component.html',
   styleUrls: ['./data-form.component.css']
 })
-export class DataFormComponent implements OnInit{
-
-  formulario!: FormGroup;
+export class DataFormComponent extends BaseFormComponent implements OnInit{
+  // formulario!: FormGroup;
   // estados!: EstadoBr[];
   estados!: Observable<EstadoBr[]>;
   cargos!: any[];
@@ -30,7 +30,9 @@ export class DataFormComponent implements OnInit{
     private dropDownService: DropDownService,
     private cepService: ConsultaCepService,
     private verificarEmailService: VerificaEmailService
-    ) {}
+    ) {
+      super(); //chama o construtor da classe Base
+    }
 
   ngOnInit(): void {
 
